@@ -32,6 +32,31 @@
 #
 
 # =============================================================================
-# YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+#1. "Enter a number" for the input.
+#2. check whether the numeber is prime using the modulus operator
+#logic behind modulus operator is...if the number is prime the the result should be 0 mod the number
+#Create a function which would disqualify numbers less than 2 automatically.
 
+testnumber = int(input("Enter a number: "))
+
+def PrimeCheck(testnumber):
+    if testnumber < 2:
+        return False
+    elif testnumber == 2:
+        return True
+    elif testnumber % 2 == 0:
+        return False
+    else:
+        for i in range(3, int(testnumber**0.5) + 1, 2):
+            if testnumber % i == 0:
+                return False
+        return True
+
+if PrimeCheck(testnumber):
+    print(f"{testnumber} is a prime number.")
+else:
+    print(f"{testnumber} is NOT a prime number.")
+
+
+
+# =============================================================================

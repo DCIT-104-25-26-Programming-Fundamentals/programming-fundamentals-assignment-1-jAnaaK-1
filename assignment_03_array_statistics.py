@@ -36,6 +36,51 @@
 #
 
 # =============================================================================
-# YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
+
+
+
+number1 = int(input("Enter number 1: "))
+number2 = int(input("Enter number 2: "))
+number3 = int(input("Enter number 3: "))   
+number4 = int(input("Enter number 4: "))
+number5 = int(input("Enter number 5: "))
+
+def Sumofnumbers(number1,number2,number3,number4,number5):
+    total = number1 + number2 + number3 + number4 + number5
+    return total
+
+def Averageofnumbers(total, count):
+    average = total / count
+    return average
+
+def Maximumofnumbers(number1,number2,number3,number4,number5):
+        maximum = number1
+        if number2 > maximum:
+            maximum = number2
+        if number3 > maximum:
+            maximum = number3
+        if number4 > maximum:
+            maximum = number4
+        if number5 > maximum:
+            maximum = number5
+        return maximum
+
+def Minimumofnumbers(number1,number2,number3,number4,number5):
+        minimum = number1
+        if number2 < minimum:
+            minimum = number2
+        if number3 < minimum:
+            minimum = number3
+        if number4 < minimum:
+            minimum = number4
+        if number5 < minimum:
+            minimum = number5
+        return minimum
+
+print(f"Sum: {Sumofnumbers(number1, number2, number3, number4, number5)}")
+print(f"Average: {Averageofnumbers(Sumofnumbers(number1, number2, number3, number4, number5), 5)}")
+print(f"Maximum: {Maximumofnumbers(number1, number2, number3, number4, number5)}")
+print(f"Minimum: {Minimumofnumbers(number1, number2, number3, number4, number5)}")
+
 # =============================================================================
 

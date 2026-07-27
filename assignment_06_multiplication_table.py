@@ -52,6 +52,42 @@
 
 #
 # =============================================================================
-# YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
+
+# Multiplication Table
+
+# Asking the user to enter a number
+number = int(input("Enter a number: "))
+
+# Printing the multiplication table from 1 to 12
+for i in range(1, 13):
+    print(f"{number} x {i} = {number * i}")
+
+
+
+
+
+# Multiplication Tables from 1 to N
+
+# Asking the user to enter a number
+N = int(input("Enter a number: "))
+
+# Printing the multiplication table for every number from 1 to N
+if N > 0:
+    for i in range(1, N + 1):
+        print(f"\nMultiplication Table of {i}")
+        
+        for j in range(1, 11):
+            print(f"{i} x {j} = {i * j}")
+
+
+    # Separator line
+    print("--------------------")
+
+if N <= 0:
+    print("Error: Please enter a positive integer.")
+    
+
+
+
 # =============================================================================
 

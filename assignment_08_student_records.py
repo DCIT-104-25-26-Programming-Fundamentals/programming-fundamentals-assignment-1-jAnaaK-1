@@ -87,6 +87,153 @@
 #
 
 # =============================================================================
-# YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
+# Student Record System
+
+
+# A console-based program to manage and track student information
+
+students = []
+
+
+def display_menu():
+    """Display the main menu options."""
+    print("\n================================")
+    print("   STUDENT RECORD SYSTEM MENU")
+    print("================================")
+    print("1. Add student")
+    print("2. Display all students")
+    print("3. Calculate average score")
+    print("4. Quit")
+    print()
+
+
+def add_student():
+    """Add a new student record with name, ID, and scores."""
+    try:
+        name = input("Student name: ").strip()
+        if not name:
+            print("Error: Student name cannot be empty.")
+            return
+        
+        student_id = int(input("Student ID: ").strip())
+        
+        # Check if ID already exists
+        for student in students:
+            if student["id"] == student_id:
+                print(f"Error: A student with ID {student_id} already exists.")
+                return
+        
+        num_scores = int(input("How many scores? "))
+        if num_scores < 1:
+            print("Error: Number of scores must be at least 1.")
+            return
+        
+        scores = []
+        for i in range(1, num_scores + 1):
+            try:
+                score = float(input(f"Enter score {i}: "))
+                if 0 <= score <= 100:  # Assuming scores are between 0-100
+                    scores.append(score)
+                else:
+                    print("Error: Score must be between 0 and 100.")
+                    return
+            except ValueError:
+                print("Error: Please enter a valid number for the score.")
+                return
+        
+        student = {
+            "name": name,
+            "id": student_id,
+            "scores": scores
+        }
+        students.append(student)
+        print(f'Student "{name}" added successfully.')
+    
+    except ValueError:
+        print("Error: Please enter valid input (ID must be a number).")
+
+
+def calculate_average(scores):
+    """Calculate and return the average of a list of scores."""
+    if not scores:
+        return 0
+    return sum(scores) / len(scores)
+
+
+def display_all_students():
+    """Display a formatted table of all students with their information."""
+    if not students:
+        print("No students have been added yet.")
+        return
+    
+    print("-" * 65)
+    print(f"{'Name':<20} {'ID':<12} {'Scores':<20} {'Average':<10}")
+    print("-" * 65)
+    
+    for student in students:
+        name = student["name"]
+        student_id = student["id"]
+        scores = student["scores"]
+        average = calculate_average(scores)
+        
+        # Format scores as comma-separated values
+        scores_str = ", ".join(str(int(s) if s == int(s) else s) for s in scores)
+        
+        print(f"{name:<20} {student_id:<12} {scores_str:<20} {average:.2f}")
+    
+    print("-" * 65)
+
+
+def calculate_student_average():
+    """Find a student by ID and display their average score."""
+    if not students:
+        print("No students in the system.")
+        return
+    
+    try:
+        student_id = int(input("Enter student ID: "))
+        
+        for student in students:
+            if student["id"] == student_id:
+                name = student["name"]
+                average = calculate_average(student["scores"])
+                print(f"{name}'s average score: {average:.2f}")
+                return
+        
+        print(f"Error: Student with ID {student_id} not found.")
+    
+    except ValueError:
+        print("Error: Please enter a valid student ID (number).")
+
+
+def quit_program():
+    """Exit the program with a farewell message."""
+    print("Goodbye!")
+    return False
+
+
+def main():
+    """Main program loop to run the student record system."""
+    running = True
+    
+    while running:
+        display_menu()
+        choice = input("Enter your choice (1-4): ").strip()
+        
+        if choice == "1":
+            add_student()
+        elif choice == "2":
+            display_all_students()
+        elif choice == "3":
+            calculate_student_average()
+        elif choice == "4":
+            running = quit_program()
+        else:
+            print("Error: Invalid choice. Please enter a number between 1 and 4.")
+
+
+if __name__ == "__main__":
+    main()
+
 # =============================================================================
 
